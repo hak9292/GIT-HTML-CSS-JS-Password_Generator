@@ -1,8 +1,9 @@
 // Assignment Code
+//added = " " to var password to state that it was a string
 var generateBtn = document.querySelector("#generate");
-var charNum = 0;
-var format = " ";
-var password = " ";
+var charNum;
+var format;
+var password= " ";
 var clickBtn = document.getElementById("generate");
 var lower = "qwertyuiopasdfghjklzxcvbnm";
 //converts "lower" string into uppercase
@@ -11,14 +12,12 @@ var num = "1234567890";
 var spec = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
 
 function generatePassword() {
-// clickBtn.addEventListener("click", function () {
-  //console.log("Generate button was clicked")
-
 //Ask user how many characters they want
     charNum = window.prompt("How many characters would you like your password to contain?");
     if (!charNum) {
-      console.log("cancelled");
+      //console.log("cancelled");
       return;
+      //found isNaN was perfect for this
     } else if (isNaN(charNum)) {
         userChoice = window.alert("Password length must be provided as a number.")
         return;
@@ -48,6 +47,10 @@ function generatePassword() {
       return;
     }
     for (i = 0; i < charNum; i++) {
+      // discovered a way to randomize characters within a string, 
+      // so I converted all arrays of the character options
+      // into strings and had to make var format to hold the desired
+      // types of characters
       password += format[Math.floor(Math.random() * format.length)];
     } return password;
   }
